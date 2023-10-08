@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row py-4 justify-content-between align-items-center">
+    <div class="col-md-4">
+      <!-- <img class="img-fluid" [src]="productDetails?.imageCover" alt=""> -->
+
+      <owl-carousel-o [options]="customOptions">
+
+        <ng-container *ngFor="let img of productDetails.images">
+          <ng-template carouselSlide>
+            <img [src]="img" >
+          </ng-template>
+        </ng-container>
+
+      </owl-carousel-o>
+
+    </div>
+    <div class="col-md-8">
+      <h2 class="h4 fw-bolder mb-2">{{productDetails?.title}}</h2>
+      <p class="text-muted py-3">{{productDetails?.description}}</p>
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted fw-bold">{{productDetails?.price}} EGP</span>
+        <span class=" rating-color fw-semibold"><i class="fas fa-star rating-color"></i>
+        {{productDetails?.ratingsAverage}}
+
+        </span>
+      </div>
+      <button class="w-100 btn bg-main text-white">+ Add To Cart</button>
+    </div>
+  </div>
+</div>

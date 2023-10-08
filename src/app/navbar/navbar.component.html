@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <div class="container">
+    <a class="navbar-brand fw-bold fs-3" routerLink="home">Navbar</a>
+    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+      <ul *ngIf="isLogin" class="navbar-nav m-auto mt-2 mt-lg-0">
+        <li class="nav-item ms-2">
+          <a class="nav-link" routerLink="home" routerLinkActive="navActiveColor">Home</a>
+        </li>
+
+        <li class="nav-item ms-2">
+          <a class="nav-link" routerLink="products" routerLinkActive="navActiveColor">Products</a>
+        </li>
+        <li class="nav-item ms-2">
+          <a class="nav-link" routerLink="categories" routerLinkActive="navActiveColor">Categories</a>
+        </li>
+        <li class="nav-item ms-2">
+          <a class="nav-link" routerLink="brands" routerLinkActive="navActiveColor">Brands</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+        <li *ngIf="!isLogin" class="nav-item ms-2">
+          <a class="nav-link" routerLink="register" routerLinkActive="navActiveColor">Register</a>
+        </li>
+        <li *ngIf="!isLogin" class="nav-item ms-2">
+          <a class="nav-link" routerLink="login" routerLinkActive="navActiveColor">Login</a>
+        </li>
+        <li class="nav-item ms-2">
+          <a class="nav-link position-relative" routerLink="cart" routerLinkActive="text-danger">
+            <i  class="fas fa-cart-shopping fa-xl"></i>
+            <span class="badge bg-main text-white position-absolute top-0 end-0">{{cartNumbers}}</span>
+          </a>
+        </li>
+
+        <li (click)="logOut()" *ngIf="isLogin" class="nav-item ms-2">
+          <span class="nav-link cursor-pointer" >Logout</span>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+

@@ -1,0 +1,15 @@
+<div class="container my-4">
+  <div class="row g-4">
+    <div *ngFor="let category of categoriesList" class=" col-md-4 ">
+      <div class="card category-card text-center cursor-pointer">
+        <div class="card-img">
+          <img class="img-fluid w-100  " style="height: 350px;" [src]="category.image" alt="">
+        </div>
+        <div class="card-body text-main">
+          <h3 class="m-0 fw-semibold"> {{category.name}} </h3>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

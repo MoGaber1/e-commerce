@@ -1,0 +1,51 @@
+<div class="container pt-4" >
+  <h4 class="fw-bold">Login Now! : </h4>
+
+  <div class="alert alert-danger" *ngIf="apiError" >{{apiError}}</div>
+
+  <form class="mt-3" (ngSubmit)="handleLogin(loginForm)" [formGroup]="loginForm">
+
+
+
+    <label for="email">Email: </label>
+    <input type="text" formControlName="email" class="form-control mb-3" id="email">
+    <div class="alert alert-danger" *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched " >
+      <p *ngIf="loginForm.get('email')?.getError('email')" class="m-0">Email is not valid</p>
+      <p *ngIf="loginForm.get('email')?.getError('required')" class="m-0">Email is required</p>
+    </div>
+
+
+    <label for="password">Password: </label>
+    <input type="password" formControlName="password" class="form-control mb-3" id="password">
+    <div class="alert alert-danger" *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched ">
+      <p *ngIf="loginForm.get('password')?.getError('pattern')" >Password is invalid</p>
+      <p *ngIf="loginForm.get('password')?.getError('required')" >Password is required</p>
+    </div>
+
+
+    <div class="mb-3
+    ">
+      <a class="text-primary cursor-pointer fs-6 fw-normal " routerLink="/forgotPassword">
+        Forgot Password?
+      </a>
+    </div>
+
+
+    <button  type="submit" class="btn btn-primary ">
+
+      <i *ngIf="isLoading"  class="disabled fas fa-spinner fa-spin"></i>
+      <span *ngIf="!isLoading" >Login</span>
+
+    </button>
+
+
+
+
+
+  </form>
+
+  <div class="mt-3">
+    <p class="d-inline-block">Don't have an account?</p>
+    <a  (click)="registerRouter()" class="text-primary cursor-pointer fs-6 fw-semibold ms-2">Register now</a>
+  </div>
+</div>

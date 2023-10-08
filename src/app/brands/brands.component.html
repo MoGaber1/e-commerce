@@ -1,0 +1,8 @@
+
+  <div class="row g-4">
+    <div *ngFor="let brands of brandsList" class="col-md-3">
+      <div class="card category-card cursor-pointer">
+        <img class="card-img" [src]="brands.image" >
+      </div>
+    </div>
+  </div>
