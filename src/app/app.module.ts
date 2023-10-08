@@ -29,9 +29,12 @@ import { CustomPricePipe } from './pipes/custom-price.pipe';
 import { SearchPipe } from './pipes/search.pipe';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
-import { AddheaderInterceptor } from './addheader.interceptor copy';
+import { AddheaderInterceptor } from './interceptors/addheader.interceptor';
 
 import { ToastrModule } from 'ngx-toastr';
+import { NgxSpinnerModule } from "ngx-spinner";
+import { LoadingInterceptor } from './interceptors/loading.interceptor';
+
 
 
 
@@ -67,14 +70,23 @@ import { ToastrModule } from 'ngx-toastr';
     CarouselModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    NgxSpinnerModule,
 
 
   ],
-  providers: [{
+  providers: [
+    {
     provide: HTTP_INTERCEPTORS,
     useClass:AddheaderInterceptor,
     multi:true
-  }],
+  },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: LoadingInterceptor,
+    multi:true
+  }
+
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
