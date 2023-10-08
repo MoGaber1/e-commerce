@@ -31,6 +31,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { AddheaderInterceptor } from './addheader.interceptor copy';
 
+import { ToastrModule } from 'ngx-toastr';
+
 
 
 @NgModule({
@@ -64,6 +66,7 @@ import { AddheaderInterceptor } from './addheader.interceptor copy';
     FormsModule,
     CarouselModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
 
 
   ],
