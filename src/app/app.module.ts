@@ -22,13 +22,14 @@ import { CategoriesSliderComponent } from './categories-slider/categories-slider
 
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule , HttpInterceptor } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule , HttpInterceptor } from '@angular/common/http';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CustomPricePipe } from './pipes/custom-price.pipe';
 import { SearchPipe } from './pipes/search.pipe';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { AddheaderInterceptor } from './addheader.interceptor copy';
 
 
 
@@ -66,7 +67,11 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
 
 
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass:AddheaderInterceptor,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
