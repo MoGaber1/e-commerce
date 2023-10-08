@@ -8,6 +8,7 @@
     --main-color:#0aad0a;
     --secondary-color:#1ae71a;
     --light-color:#ffffff;
+    --ter-color:#cfe7c6;
     --shadow: rgba(145,158,171,.2) 0px 2px 4px -1px,rgba(145,158,171,.14) 0px 4px 5px 0px,rgba(145,158,171,.12) 0px 1px 10px 0px;
     --font-family:'Encode Sans Expanded', sans-serif;
     --rating-color:#ffc908;
@@ -73,5 +74,5 @@ a , a:hover{
 }
 .bg-main-light
 {
-    background-color: var(--light-color) !important;
+    background-color: var(--ter-color) !important;
 }
