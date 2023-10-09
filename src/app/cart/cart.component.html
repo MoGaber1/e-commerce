@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="bg-main-light rounded-3 p-4 my-4 w-75 mx-auto">
+  <div *ngIf="cartDetails;else empty" class="bg-main-light rounded-3 p-4 my-4 w-75 mx-auto">
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h3 >Shop Cart</h3>
       <button (click)="clearCart()" class="btn text-danger fw-bold">
@@ -16,7 +16,7 @@
       <div class="col-md-10 d-flex justify-content-between align-items-center">
         <div>
           <h6 class="fw-semibold">{{item.product.title}}</h6>
-          <h6 class="text-main fw-medium">Price : {{item.price}}</h6>
+          <h6 class="text-main fw-medium">Price : {{item.price | currency:"EGP "}}</h6>
           <button class="border-0 m-0 p-0 bg-transparent text-danger" (click)="removeItem(item.product._id)"><i
               class="fa-regular fa-trash-can me-1"></i>Remove</button>
         </div>
@@ -31,4 +31,14 @@
       <a class="text-white" routerLink="/checkout">checkout</a>
     </button>
   </div>
+
+  <ng-template #empty>
+    <div  class=" bg-main-light rounded-3 p-4 my-4 w-75 mx-auto h-100">
+        <h3 class="fw-bold text-center">Your Cart Is Empty</h3>
+      <div class="w-25 mx-auto">
+        <img src="../../assets/images/Empty-pana.png" class="img-fluid "  alt="">
+      </div>
+    </div>
+
+  </ng-template>
 </div>
