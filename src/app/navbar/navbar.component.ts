@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../Services/auth.service';
 import { Router } from '@angular/router';
 import { CartService } from '../Services/cart.service';
@@ -10,7 +10,7 @@ import { CartService } from '../Services/cart.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
 
 
   isLogin:boolean= false;
@@ -25,14 +25,7 @@ export class NavbarComponent {
 
   constructor (private _AuthService:AuthService,private _Router:Router, private _CartService:CartService){
 
-    this._CartService.numOfItems.subscribe({
-      next:(res)=>{this.cartNumbers=res,
-        console.log(this.cartNumbers)
 
-      },
-      error:(err)=> console.log(err)
-
-    })
 
     _AuthService.userData.subscribe({
       next:()=>{
@@ -48,5 +41,34 @@ export class NavbarComponent {
     })
 
   }
+
+
+
+ngOnInit(): void {
+      this._CartService.numOfItems.subscribe({
+      next:(res)=>{this.cartNumbers=res,
+        console.log(this.cartNumbers)
+
+      },
+      error:(err)=> console.log(err)
+
+    }),
+
+    this._CartService.getCart().subscribe({
+      next:(response)=>{
+        this.cartNumbers = response.numOfCartItems
+      }
+    })
+
+
+
+}
+
+
+
+
+
+
+
 
 }
