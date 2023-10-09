@@ -44,6 +44,11 @@ numOfItems:BehaviorSubject<number> = new BehaviorSubject(0)
       `https://ecommerce.routemisr.com/api/v1/cart/${productId}`,
     );
   }
+  clearCart(): Observable<any> {
+    return this._HttpClient.delete(
+      `https://ecommerce.routemisr.com/api/v1/cart`,
+    );
+  }
   updateProductCount(productId: string, counter: number): Observable<any> {
     return this._HttpClient.put(
       `https://ecommerce.routemisr.com/api/v1/cart/${productId}`,

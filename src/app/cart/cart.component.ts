@@ -15,20 +15,6 @@ export class CartComponent implements OnInit {
   constructor( private _CartService:CartService ){
 
   }
-
-removeItem(productId:string){
-  this._CartService.removeCartItem(productId).subscribe({
-    next:(response)=> this.cartDetails=response.data,
-    error:(err)=> console.log(err)
-  })
-}
-updateProductCount(productId:string,counter:number){
-  this._CartService.updateProductCount(productId,counter).subscribe({
-    next:(response)=> this.cartDetails=response.data,
-    error:(err)=> console.log(err)
-  })
-}
-
   ngOnInit(): void {
     this._CartService.getCart().subscribe({
       next:(response)=> this.cartDetails=response.data,
@@ -37,5 +23,35 @@ updateProductCount(productId:string,counter:number){
 
     })
   }
+
+
+removeItem(productId:string){
+  this._CartService.removeCartItem(productId).subscribe({
+    next:(response)=> this.cartDetails=response.data,
+    error:(err)=> console.log(err)
+  })
+}
+clearCart(){
+  this._CartService.clearCart().subscribe({
+    next:(response)=> {
+      this.cartDetails=response.data,
+      console.log(response);
+
+    },
+    error:(err)=> console.log(err)
+  })
+}
+updateProductCount(productId:string,counter:number){
+
+  if (counter >= 1){
+  this._CartService.updateProductCount(productId,counter).subscribe({
+    next:(response)=> this.cartDetails=response.data,
+    error:(err)=> console.log(err)
+  })
+}
+
+
+  }
+
 
 }

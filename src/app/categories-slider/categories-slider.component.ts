@@ -37,8 +37,21 @@ customOptions: OwlOptions = {
   navText: ['', ''],
   responsive: {
     0: {
-      items: 7
+      items: 2
     },
+  
+    400: {
+      items: 3
+    },
+    600: {
+      items: 4
+    },
+    740: {
+      items: 5
+    },
+    940: {
+      items: 7
+    }
 
   },
   nav: true
