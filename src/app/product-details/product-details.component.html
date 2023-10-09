@@ -3,11 +3,11 @@
     <div class="col-md-4">
       <!-- <img class="img-fluid" [src]="productDetails?.imageCover" alt=""> -->
 
-      <owl-carousel-o [options]="customOptions">
+      <owl-carousel-o  [options]="customOptions">
 
-        <ng-container *ngFor="let img of productDetails.images">
+        <ng-container  *ngFor="let img of productDetails.images">
           <ng-template carouselSlide>
-            <img [src]="img" >
+            <img class="rounded-2" [src]="img" >
           </ng-template>
         </ng-container>
 
@@ -24,7 +24,7 @@
 
         </span>
       </div>
-      <button class="w-100 btn bg-main text-white">+ Add To Cart</button>
+      <button (click)="addToCart(productDetails?._id)" class="w-100 btn bg-main text-white">+ Add To Cart</button>
     </div>
   </div>
 </div>
